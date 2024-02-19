@@ -89,3 +89,5 @@ y no se afecta directamente a la entidad que ya se guarda en BD ya que es poco p
 de la compilación. Los secretos deben estar almacenados en un Vault y ser tomados únicamente con acceso
 al agente del pipeline sea Jenkins, GithubActions, etc.
 
+20) No llegó a alcanzar el tiempo para hacer las pruebas unitarias del backend
+
