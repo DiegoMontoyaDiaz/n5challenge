@@ -1,0 +1,10 @@
+user:
+  admin: amontoya
+server:
+  port: 9902
+logging:
+  level:
+    com.n5.login: trace
+spring:
+  mvc:
+    dispatch-options-request=true:

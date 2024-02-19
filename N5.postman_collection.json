@@ -1,0 +1,706 @@
+{
+	"info": {
+		"_postman_id": "d253d077-2fcb-4f69-8526-b2eb714e03f0",
+		"name": "N5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22091971"
+	},
+	"item": [
+		{
+			"name": "1. ElasticSearch",
+			"item": [
+				{
+					"name": "1. CreateIndex",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "changeme",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "elastic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mappings\": {\n      \"properties\": {\n        \"permissionId\": {\n          \"type\": \"integer\"\n        },\n        \"nombreEmpleado\": {\n          \"type\": \"text\"\n        },\n        \"apellidoEmpleado\": {\n          \"type\": \"text\"\n        },\n        \"tipoPermiso\": {\n          \"type\": \"integer\"\n        },\n        \"fechaPermiso\": {\n          \"type\": \"date\"\n        }\n      }\n    }\n  }"
+						},
+						"url": {
+							"raw": "https://localhost:9200/permisos",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"permisos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CreateIndexExample",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mappings\": {\n      \"properties\": {\n        \"permissionId\": {\n          \"type\": \"integer\"\n        },\n        \"nombreEmpleado\": {\n          \"type\": \"text\"\n        },\n        \"apellidoEmpleado\": {\n          \"type\": \"text\"\n        },\n        \"tipoPermiso\": {\n          \"type\": \"integer\"\n        },\n        \"fechaPermiso\": {\n          \"type\": \"date\"\n        }\n      }\n    }\n  }"
+								},
+								"url": {
+									"raw": "https://localhost:9200/permisos",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"permisos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-elastic-product",
+									"value": "Elasticsearch"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "67"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"acknowledged\": true,\n    \"shards_acknowledged\": true,\n    \"index\": \"permisos\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Test - Create Document",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "changeme",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "elastic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"nombreEmpleado\": \"Valeria\",\n    \"apellidoEmpleado\": \"Beingolea\",\n    \"tipoPermiso\": 3,\n    \"fechaPermiso\": \"2022-07-10T11:00:55Z\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:9200/permisos/_doc",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"permisos",
+								"_doc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CreateDocumemtsExample",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"4\",\n    \"nombreEmpleado\": \"Alejandro\",\n    \"apellidoEmpleado\": \"James\",\n    \"tipoPermiso\": 3,\n    \"fechaPermiso\": \"2022-07-10T11:00:55Z\"\n}"
+								},
+								"url": {
+									"raw": "https://localhost:9200/permisos/_doc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"permisos",
+										"_doc"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/permisos/_doc/Q00gtI0B-pPHwscGt7m2"
+								},
+								{
+									"key": "X-elastic-product",
+									"value": "Elasticsearch"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "160"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_index\": \"permisos\",\n    \"_id\": \"Q00gtI0B-pPHwscGt7m2\",\n    \"_version\": 1,\n    \"result\": \"created\",\n    \"_shards\": {\n        \"total\": 2,\n        \"successful\": 1,\n        \"failed\": 0\n    },\n    \"_seq_no\": 3,\n    \"_primary_term\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "2. Api Permissions",
+			"item": [
+				{
+					"name": "0. GetPermissionTypes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"amontoya\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9902/api-login/v1/userAuthentication",
+							"host": [
+								"localhost"
+							],
+							"port": "9902",
+							"path": [
+								"api-login",
+								"v1",
+								"userAuthentication"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - GetPermissionTypesExample",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9903/api-permissions/v1/types",
+									"host": [
+										"localhost"
+									],
+									"port": "9903",
+									"path": [
+										"api-permissions",
+										"v1",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 16 Feb 2024 15:44:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"permissionTypes\": [\n        {\n            \"generatedId\": \"1\",\n            \"permissionTypeDescription\": \"Read\"\n        },\n        {\n            \"generatedId\": \"2\",\n            \"permissionTypeDescription\": \"Write\"\n        },\n        {\n            \"generatedId\": \"3\",\n            \"permissionTypeDescription\": \"Delete\"\n        },\n        {\n            \"generatedId\": \"4\",\n            \"permissionTypeDescription\": \"Update\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "1. RequestPermissions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set(\"currenDateTime\", moment());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreEmpleado\": \"Toto\",\n    \"apellidoEmpleado\": \"Toto\",\n    \"tipoPermiso\": 2,\n    \"fechaPermiso\": \"{{currenDateTime}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9903/api-permissions/v1/",
+							"host": [
+								"localhost"
+							],
+							"port": "9903",
+							"path": [
+								"api-permissions",
+								"v1",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - RequestPermissionExample",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombreEmpleado\": \"Toto\",\n    \"apellidoEmpleado\": \"Toto\",\n    \"tipoPermiso\": 2,\n    \"fechaPermiso\": \"{{currenDateTime}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9903/api-permissions/v1/",
+									"host": [
+										"localhost"
+									],
+									"port": "9903",
+									"path": [
+										"api-permissions",
+										"v1",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Feb 2024 18:43:46 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"permissionId\": \"35\"\n}"
+						}
+					]
+				},
+				{
+					"name": "2. GetPermissions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set(\"currenDateTime\", moment());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreEmpleado\": \"Toto\",\n    \"apellidoEmpleado\": \"Toto\",\n    \"tipoPermiso\": 2,\n    \"fechaPermiso\": \"{{currenDateTime}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9903/api-permissions/v1/",
+							"host": [
+								"localhost"
+							],
+							"port": "9903",
+							"path": [
+								"api-permissions",
+								"v1",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - GetPermissionExample",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9903/api-permissions/v1/35",
+									"host": [
+										"localhost"
+									],
+									"port": "9903",
+									"path": [
+										"api-permissions",
+										"v1",
+										"35"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Feb 2024 19:12:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"permissionId\": 35,\n    \"nombreEmpleado\": \"Toto\",\n    \"apellidoEmpleado\": \"Toto\",\n    \"tipoPermiso\": \"2\",\n    \"fechaPermiso\": \"2024-02-17T18:43:01.696+00:00\"\n}"
+						},
+						{
+							"name": "404 - Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9903/api-permissions/v1/34",
+									"host": [
+										"localhost"
+									],
+									"port": "9903",
+									"path": [
+										"api-permissions",
+										"v1",
+										"34"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Feb 2024 19:14:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "3. ModifyPermissions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set(\"currenDateTime\", moment());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoPermiso\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9903/api-permissions/v1/35",
+							"host": [
+								"localhost"
+							],
+							"port": "9903",
+							"path": [
+								"api-permissions",
+								"v1",
+								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,33 @@
+user:
+  admin: amontoya
+server:
+  port: 9903
+logging:
+  level:
+    com.n5.permission: trace
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.elasticsearch.client.RestClient: DEBUG
+spring:
+  jpa:
+    properties:
+      hibernate.connection.url: jdbc:postgresql://postgres:5432/n5
+      #hibernate.connection.url: jdbc:postgresql://localhost:5432/n5
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.connection.username: n5
+      hibernate.connection.password: n5
+      hibernate.use_jdbc_metadata_defaults: false
+      hibernate.hbm2ddl.auto: validate
+      hibernate.ddl-auto: validate
+
+  kafka:
+    producer:
+      boostrap-servers: kafka:9092
+      #boostrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      topic-name: permission-operations
+elastic:
+  url: https://n5-elastic-es01-1:9200/permisos/_doc
+  #url: https://localhost:9200/permisos/_doc
+  auth: Basic ZWxhc3RpYzpjaGFuZ2VtZQ==

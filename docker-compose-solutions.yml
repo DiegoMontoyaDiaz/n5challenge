@@ -1,0 +1,34 @@
+version: '3.8'
+name: N5-challenge
+services:
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "9900:80"
+    networks:
+      - proxy-network  
+      
+  api-permisos:
+    build:
+      context: ./api-permissions
+      dockerfile: Dockerfile
+    ports:
+      - "9903:9903" 
+    networks:
+      - proxy-network
+
+  api-login:
+    build:
+      context: ./api-login
+      dockerfile: Dockerfile
+    ports:
+      - "9902:9902" 
+    networks:
+      - proxy-network
+
+networks:
+  proxy-network:
+    external:
+      name: n5-network

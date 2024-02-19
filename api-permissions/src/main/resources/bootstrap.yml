@@ -1,0 +1,17 @@
+info:
+  project:
+    name: api-permission-challenge
+    version: 1.0.0-SNAPSHOT
+    description: N5's Adrián Montoya challenge
+spring:
+  output:
+    ansi:
+      enabled: always
+  cloud:
+    kubernetes:
+      enabled: false
+  application:
+    name: api-permission
+  main:
+    allow-bean-definition-overriding: true
+    lazy-initialization: true

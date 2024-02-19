@@ -1,0 +1,17 @@
+info:
+  project:
+    name: api-login
+    version: 1.0.0-SNAPSHOT
+    description: Adrián Montoya's N5 challenge
+spring:
+  output:
+    ansi:
+      enabled: always
+  cloud:
+    kubernetes:
+      enabled: false
+  application:
+    name: api-login
+  main:
+    allow-bean-definition-overriding: true
+    lazy-initialization: true
